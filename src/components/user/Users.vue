@@ -136,9 +136,7 @@
 					email: '',
 					mobile: ''
 				},
-				editForm: {
-
-				},
+				editForm: {},
 				editFormRules: {
 					email: [{
 							required: true,
@@ -222,7 +220,7 @@
 				if (res.meta.status !== 200) {
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '获取用户列表失败！',
 						type: 'error'
 					})
 				}
@@ -245,13 +243,13 @@
 					userInfo.mg_state = !userInfo.mg_state
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '修改用户状态失败！',
 						type: 'error'
 					})
 				}
 				this.$message({
 					showClose: true,
-					message: res.meta.msg,
+					message: '修改用户状态成功！',
 					type: 'success'
 				})
 			},
@@ -267,13 +265,13 @@
 					if (res.meta.status !== 201) {
 						return this.$message({
 							showClose: true,
-							message: res.meta.msg,
+							message: '添加用户失败！',
 							type: 'error'
 						})
 					}
 					this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '添加用户成功！',
 						type: 'success'
 					})
 					this.AddDialogVisible = false
@@ -287,7 +285,7 @@
 				if (res.meta.status !== 200) {
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '获取用户失败！',
 						type: 'error'
 					})
 				}
@@ -309,13 +307,13 @@
 					if (res.meta.status !== 200) {
 						return this.$message({
 							showClose: true,
-							message: res.meta.msg,
+							message: '修改用户失败！',
 							type: 'error'
 						})
 					}
 					this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '修改用户成功！',
 						type: 'success'
 					})
 					this.editDialogVisible = false
@@ -323,7 +321,6 @@
 				})
 			},
 			async removeUser(id) {
-				console.log(id)
 				const confirmRsult = await this.$confirm('确认删除该用户吗?', '提示', {
 					confirmButtonText: '确定',
 					cancelButtonText: '取消',
@@ -336,13 +333,13 @@
 				if (res.meta.status !== 200) {
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '删除用户失败！',
 						type: 'error'
 					})
 				}
 				this.$message({
 					showClose: true,
-					message: res.meta.msg,
+					message: '删除用户成功！',
 					type: 'success'
 				})
 				this.getUsersList()
@@ -353,9 +350,9 @@
 					data: res
 				} = await this.$http.get('roles')
 				if (res.meta.status !== 200) {
-					this.$message({
+					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '获取用户信息失败！',
 						type: 'error'
 					})
 				}
@@ -375,13 +372,13 @@
 				if(res.meta.status !== 200) {
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '分配角色失败！',
 						type: 'error'
 					})
 				}
 				this.$message({
 					showClose: true,
-					message: res.meta.msg,
+					message: '分配角色成功！',
 					type: 'success'
 				})
 				this.getUsersList()

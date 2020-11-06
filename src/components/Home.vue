@@ -76,12 +76,11 @@
 				if (res.meta.status !== 200) {
 					return this.$message({
 						showClose: true,
-						message: res.meta.msg,
+						message: '获取菜单失败！',
 						type: 'error'
 					})
 				}
 				this.menuList = res.data
-				console.log(res)
 			},
 			toggleCollapse() {
 				this.isCollapse = !this.isCollapse
